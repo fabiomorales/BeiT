@@ -1,13 +1,19 @@
-import Flex from './components/Flex';
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useState } from 'react';
+import CheckboxItem from './components/CheckBoxItem';
 import Container from './components/Container';
+import Flex from './components/Flex';
 
 const App = () => {
+  const [checkSelected, setCheckSelected] = useState(false);
+
   return (
     <Container>
       <Flex flex={1} justifyContent="center" alignItems="center">
-        <Text>Hello Wold</Text>
+        <CheckboxItem
+          label="teste"
+          selected={checkSelected}
+          onSelect={() => setCheckSelected(!checkSelected)}
+        />
       </Flex>
     </Container>
   );
