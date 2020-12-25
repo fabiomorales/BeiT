@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Container>
       <Flex flex={1} justifyContent="center" alignItems="center">
-        <Text>Helo Wold</Text>
+        <Text>Hello Wold</Text>
       </Flex>
     </Container>
   );
