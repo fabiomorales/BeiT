@@ -1,8 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-declare const global: {HermesInternal: null | {}};
-
 const App = () => {
   return (
     <View>
