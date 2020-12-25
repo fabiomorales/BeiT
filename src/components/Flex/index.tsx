@@ -1,7 +1,50 @@
 import React, { FC } from 'react';
-import { FlexStyle, View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
-const Flex: FC<FlexStyle> = ({
+type AlignContent =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around';
+type AlignItems = 'stretch' | 'flex-start' | 'flex-end' | 'center' | 'baseline';
+type AlignSelf =
+  | 'auto'
+  | 'stretch'
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'baseline';
+type Display = 'none' | 'flex';
+type Flex = number;
+type FlexBasis = 'auto' | string | number;
+type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+type FlexFlow = 'row wrap' | 'row nowrap' | 'column nowrap';
+type FlexGrow = number;
+type FlexShrink = number;
+type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
+type JustifyContent =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around';
+export interface FlexProps extends ViewProps {
+  display?: Display;
+  flex?: Flex;
+  alignContent?: AlignContent;
+  alignItems?: AlignItems;
+  alignSelf?: AlignSelf;
+  flexBasis?: FlexBasis;
+  flexDirection?: FlexDirection;
+  flexFlow?: FlexFlow;
+  flexGrow?: FlexGrow;
+  flexShrink?: FlexShrink;
+  flexWrap?: FlexWrap;
+  justifyContent?: JustifyContent;
+}
+
+const Flex: FC<FlexProps> = ({
   display,
   flex,
   alignContent,
@@ -13,23 +56,27 @@ const Flex: FC<FlexStyle> = ({
   flexShrink,
   flexWrap,
   justifyContent,
+  style,
   children,
 }) => {
   return (
     <View
-      style={{
-        display,
-        flex,
-        alignContent,
-        alignItems,
-        alignSelf,
-        flexBasis,
-        flexDirection,
-        flexGrow,
-        flexShrink,
-        flexWrap,
-        justifyContent,
-      }}>
+      style={[
+        {
+          display,
+          flex,
+          alignContent,
+          alignItems,
+          alignSelf,
+          flexBasis,
+          flexDirection,
+          flexGrow,
+          flexShrink,
+          flexWrap,
+          justifyContent,
+        },
+        style,
+      ]}>
       {children}
     </View>
   );
@@ -37,6 +84,7 @@ const Flex: FC<FlexStyle> = ({
 
 Flex.defaultProps = {
   display: 'flex',
+  flexDirection: 'row',
 };
 
 export default Flex;
