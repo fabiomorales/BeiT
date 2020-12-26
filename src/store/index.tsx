@@ -1,5 +1,12 @@
-import { Item } from 'components/CheckBoxList';
 import { createStore } from 'redux';
+
+export interface CheckListState {
+  type: string;
+  payload: {
+    selected: boolean;
+    index: number;
+  };
+}
 
 const INITIAL_STATE = [
   {
@@ -24,14 +31,14 @@ const INITIAL_STATE = [
   },
 ];
 
-function reducer(state = INITIAL_STATE, action: Item) {
+function checkList(state = INITIAL_STATE, action: CheckListState) {
   if (action.type === 'SET_CHECKBOX_CHECKED') {
-    state[action.index].selected = !action.selected;
+    state[action.payload.index].selected = !action.payload.selected;
     return [...state];
   }
   return state;
 }
 
-const store = createStore(reducer);
+const store = createStore(checkList);
 
 export default store;

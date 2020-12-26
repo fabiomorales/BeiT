@@ -2,30 +2,37 @@ import React from 'react';
 import { View } from 'react-native';
 import CheckboxItem from '../CheckBoxItem';
 import { connect } from 'react-redux';
+import { CheckListState } from 'store';
 
 export interface Item {
-  type: string;
   label: string;
   selected: boolean;
-  index: number;
 }
 
-function toggleCheckBox(item: Item, index: number) {
+function toggleCheckBox(selected: boolean, index: number) {
   return {
     type: 'SET_CHECKBOX_CHECKED',
-    item,
-    index,
+    payload: {
+      selected,
+      index,
+    },
   };
 }
 
-const CheckboxList = ({ items, dispatch }) => (
+const CheckboxList = ({
+  items,
+  dispatch,
+}: {
+  items: any;
+  dispatch: ({}: CheckListState) => void;
+}) => (
   <View>
     {items.map((item: Item, index: number) => (
       <CheckboxItem
         key={index}
         label={item.label}
         selected={item.selected}
-        onSelect={() => dispatch(toggleCheckBox(item, index))}
+        onSelect={() => dispatch(toggleCheckBox(item.selected, index))}
       />
     ))}
   </View>

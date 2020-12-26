@@ -6,9 +6,27 @@ const styles = (radioColor?: string) =>
       marginTop: 4,
       alignSelf: 'flex-start',
     },
+    radio: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center',
+      borderColor: 'gray',
+      width: 20,
+      height: 20,
+      borderRadius: 4,
+      borderWidth: 1,
+    },
+    inner: {
+      width: 20,
+      height: 20,
+      borderRadius: 4,
+      backgroundColor: 'blue',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     label: {
       color: 'gray',
-      lineHeight: 17,
+      lineHeight: 21,
     },
     selected: {
       borderColor: 'gray',

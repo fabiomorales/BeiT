@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { Text, View } from 'react-native';
-import Checkbox from '../CheckBox';
+import { Text, TouchableOpacity, View } from 'react-native';
 import Flex from '../Flex';
 import styles from './styles';
 
@@ -14,7 +13,13 @@ const CheckboxItem: FC<CheckboxItemProps> = ({ label, selected, onSelect }) => {
   return (
     <Flex style={styles().checkboxContainer}>
       <View>
-        <Checkbox selected={selected} onSelect={() => onSelect()} />
+        <TouchableOpacity
+          style={[styles().radio]}
+          onPress={() => {
+            onSelect();
+          }}>
+          {selected && <View style={styles().inner} />}
+        </TouchableOpacity>
       </View>
       <View style={styles().contentColumn}>
         {label && (
