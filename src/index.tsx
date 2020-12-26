@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import CheckboxItem from './components/CheckBoxItem';
+import React from 'react';
+import { Provider } from 'react-redux';
+import CheckboxList from './components/CheckBoxList';
 import Container from './components/Container';
 import Flex from './components/Flex';
+import Store from './store';
 
 const App = () => {
-  const [checkSelected, setCheckSelected] = useState(false);
-
   return (
     <Container>
       <Flex flex={1} justifyContent="center" alignItems="center">
-        <CheckboxItem
-          label="teste"
-          selected={checkSelected}
-          onSelect={() => setCheckSelected(!checkSelected)}
-        />
+        <Provider store={Store}>
+          <CheckboxList />
+        </Provider>
       </Flex>
     </Container>
   );

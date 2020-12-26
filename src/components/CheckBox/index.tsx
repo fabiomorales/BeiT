@@ -4,23 +4,18 @@ import styles from './styles';
 
 export interface CheckboxProps {
   selected: boolean;
-  onSelect: (selected: boolean) => void;
+  onSelect: () => void;
   color?: string;
 }
 
-const Checkbox: FC<CheckboxProps> = ({
-  selected,
-  onSelect,
-  color,
-  ...props
-}) => {
+const Checkbox: FC<CheckboxProps> = ({ selected, onSelect, color }) => {
   return (
     <TouchableOpacity
       style={[styles().radio]}
       onPress={() => {
-        onSelect(!selected);
+        onSelect();
       }}>
-      {selected && <View style={styles(color).inner} {...props} />}
+      {selected && <View style={styles(color).inner} />}
     </TouchableOpacity>
   );
 };
