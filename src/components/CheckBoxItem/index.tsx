@@ -1,21 +1,20 @@
 import React, { FC } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import Checkbox from '../CheckBox';
+import Flex from '../Flex';
 import styles from './styles';
 
 export interface CheckboxItemProps {
   label?: string;
   selected: boolean;
-  onSelect: (selected: boolean) => void;
+  onSelect: () => void;
 }
 
 const CheckboxItem: FC<CheckboxItemProps> = ({ label, selected, onSelect }) => {
   return (
-    <TouchableOpacity
-      style={styles().listItem}
-      onPress={() => onSelect(!selected)}>
-      <View style={styles().checkboxContainer}>
-        <Checkbox selected={selected} onSelect={onSelect} />
+    <Flex style={styles().checkboxContainer}>
+      <View>
+        <Checkbox selected={selected} onSelect={() => onSelect()} />
       </View>
       <View style={styles().contentColumn}>
         {label && (
@@ -25,7 +24,7 @@ const CheckboxItem: FC<CheckboxItemProps> = ({ label, selected, onSelect }) => {
           </Text>
         )}
       </View>
-    </TouchableOpacity>
+    </Flex>
   );
 };
 
