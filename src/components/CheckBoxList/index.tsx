@@ -2,21 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import CheckboxItem from '../CheckBoxItem';
 import { connect } from 'react-redux';
-import { CheckListState } from 'store';
+import { CheckListState } from 'store/modules/checkList/types';
+import { toggleCheckBox } from '../../store/modules/checkList/actions';
 
 export interface Item {
   label: string;
   selected: boolean;
-}
-
-function toggleCheckBox(selected: boolean, index: number) {
-  return {
-    type: 'SET_CHECKBOX_CHECKED',
-    payload: {
-      selected,
-      index,
-    },
-  };
 }
 
 const CheckboxList = ({
@@ -38,4 +29,4 @@ const CheckboxList = ({
   </View>
 );
 
-export default connect(state => ({ items: state }))(CheckboxList);
+export default connect(state => ({ items: state.checkList }))(CheckboxList);

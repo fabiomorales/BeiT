@@ -7,13 +7,13 @@ import Store from './store';
 
 const App = () => {
   return (
-    <Container>
-      <Flex flex={1} justifyContent="center" alignItems="center">
-        <Provider store={Store}>
+    <Provider store={Store}>
+      <Container>
+        <Flex flex={1} justifyContent="center" alignItems="center">
           <CheckboxList />
-        </Provider>
-      </Flex>
-    </Container>
+        </Flex>
+      </Container>
+    </Provider>
   );
 };
 
