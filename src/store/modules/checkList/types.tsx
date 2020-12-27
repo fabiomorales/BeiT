@@ -7,6 +7,6 @@ export interface CheckListState {
 }
 
 export interface ListSate {
-  readonly label: string;
-  selected: boolean;
+  readonly name: string;
+  readonly selected: boolean;
 }

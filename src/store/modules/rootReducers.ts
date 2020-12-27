@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import checkList from './checkList/reducers';
+import { checkList } from './checkList/reducers';
 
 export default combineReducers({
   checkList,
