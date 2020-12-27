@@ -1,41 +1,48 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { View } from 'react-native';
 import CheckboxItem from '../CheckBoxItem';
-import { connect } from 'react-redux';
-import { CheckListState } from 'store';
 
 export interface Item {
   label: string;
   selected: boolean;
 }
 
-function toggleCheckBox(selected: boolean, index: number) {
-  return {
-    type: 'SET_CHECKBOX_CHECKED',
-    payload: {
-      selected,
-      index,
-    },
-  };
-}
+const initialState = [
+  {
+    label: 'Basic Facemask',
+    selected: false,
+  },
+  {
+    label: 'Filtered Respirator',
+    selected: false,
+  },
+  {
+    label: 'Self-Contained Breathing Apparatus',
+    selected: false,
+  },
+  {
+    label: 'Protective Clothing',
+    selected: false,
+  },
+  {
+    label: 'Goggles',
+    selected: false,
+  },
+];
 
-const CheckboxList = ({
-  items,
-  dispatch,
-}: {
-  items: any;
-  dispatch: ({}: CheckListState) => void;
-}) => (
-  <View>
-    {items.map((item: Item, index: number) => (
-      <CheckboxItem
-        key={index}
-        label={item.label}
-        selected={item.selected}
-        onSelect={() => dispatch(toggleCheckBox(item.selected, index))}
-      />
-    ))}
-  </View>
-);
+const CheckboxList: FC = () => {
+  return (
+    <View>
+      {initialState.map((item: Item, index: number) => (
+        <CheckboxItem
+          key={index}
+          label={item.label}
+          selected={item.selected}
+          onSelect={() => true}
+        />
+      ))}
+    </View>
+  );
+};
 
-export default connect(state => ({ items: state }))(CheckboxList);
+export default CheckboxList;
